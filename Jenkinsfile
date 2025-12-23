@@ -4,13 +4,13 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = "kastrov/devopsexamapp:latest"
+        DOCKER_IMAGE = "yathish047/devopsexamapp:latest"
     }
 
     stages {
         stage('Git Checkout') {
             steps {
-                git url: 'https://github.com/KastroVKiran/devops-exam-app.git', 
+                git url: 'https://github.com/Yathishnagaraj/devops-exam-app.git', 
                     branch: 'master'
             }
         }
@@ -27,7 +27,7 @@ pipeline {
             steps {
                 dir('backend') {
                     script {
-                        withDockerRegistry(credentialsId: 'docker-creds', toolName: 'docker') {
+                        withDockerRegistry(credentialsId: 'docker', toolName: 'docker') {
                             sh "docker build -t ${DOCKER_IMAGE} ."
                         }
                     }
@@ -98,13 +98,13 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = "kastrov/devopsexamapp:latest"
+        DOCKER_IMAGE = "yathish047/devopsexamapp:latest"
     }
 
     stages {
         stage('Git Checkout') {
             steps {
-                git url: 'https://github.com/KastroVKiran/devops-exam-app.git', 
+                git url: 'https://github.com/Yathishnagaraj/devops-exam-app.git', 
                     branch: 'master'
             }
         }
@@ -121,7 +121,7 @@ pipeline {
             steps {
                 dir('backend') {
                     script {
-                        withDockerRegistry(credentialsId: 'docker-creds', toolName: 'docker') {
+                        withDockerRegistry(credentialsId: 'docker', toolName: 'docker') {
                             sh "docker build -t ${DOCKER_IMAGE} ."
                         }
                     }
@@ -206,7 +206,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = "kastrov/devopsexamapp:latest"
+        DOCKER_IMAGE = "yathish047/devopsexamapp:latest"
         EKS_CLUSTER = "devopsapp"
         K8S_NAMESPACE = "devopsexamapp"
         AWS_REGION = "us-west-2"  // Update to your region
